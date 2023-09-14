@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
-import axios from 'axios'; // Import axios instead of 'react-native-axios'
+import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:8088/auth/register';
+
 
 const RegisterScreen = () => {
+
+
+    //const API_BASE_URL = 'http://localhost:8080/auth/register/';
+
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -12,9 +16,10 @@ const RegisterScreen = () => {
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
 
-    const handleRegister = async () => {
+    const handleRegister = async (e) => {
+        e.preventDefault();
         try {
-            const response = await axios.post(API_BASE_URL, {
+            const response = await axios.post(`http://localhost:8080/auth/register`, {
                 firstname,
                 lastname,
                 email,
@@ -22,13 +27,28 @@ const RegisterScreen = () => {
                 dob,
                 password,
             });
-            console.log('Registration successful:', response.data);
-            // Handle success, e.g., navigate to the next screen
+
+            // Check if the response indicates success (you may need to adjust this based on your backend's response format)
+            if (response.status === 200) {
+                console.log('Registration successful:', response.data);
+                // Handle success, e.g., navigate to the next screen
+            } else {
+                console.error('Registration failed with status code:', response.status);
+                // Handle registration error, e.g., show an error message to the user
+            }
         } catch (error) {
-            console.error('Registration error:', error);
-            // Handle registration error, e.g., show an error message to the user
+            // Handle network error
+            if (error.message === 'Network Error') {
+                console.error('Network error. Please check your internet connection.');
+                // Handle network error, e.g., show an error message to the user
+            } else {
+                console.error('Registration error:', error);
+                // Handle other types of errors, e.g., show an error message to the user
+            }
         }
     };
+
+
 
     return (
         <View style={styles.container}>

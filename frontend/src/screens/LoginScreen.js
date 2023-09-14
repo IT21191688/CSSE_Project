@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'react-native';
-import axios from 'react-native-axios';
+import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -10,11 +10,11 @@ const LoginScreen = () => {
 
     const navigation = useNavigation();
 
-    const API_BASE_URL = 'http://localhost:8088/auth/login';
+    //const API_BASE_URL = 'http://localhost:8080/auth/login';
 
-    const handleLogin = async () => {
+    const handleLogin = async (e) => {
         try {
-            const response = await axios.post(`${API_BASE_URL}`, { email, password });
+            const response = await axios.post(`http://localhost:8080/auth/login`, { email, password });
             console.log('Login successful:', response.data);
             // Handle successful login, e.g., navigate to the main app screen
         } catch (error) {
