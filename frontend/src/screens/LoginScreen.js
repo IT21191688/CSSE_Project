@@ -3,7 +3,7 @@ import { View, Text, TextInput, TouchableOpacity, Button, StyleSheet } from 'rea
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 
-
+//sadeepa
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
