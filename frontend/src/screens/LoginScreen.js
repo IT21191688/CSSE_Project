@@ -12,6 +12,7 @@ import {
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/FontAwesome";
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
     const [email, setEmail] = useState('');
@@ -21,14 +22,35 @@ const LoginScreen = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`http://localhost:8082/auth/login`, { email, password });
-            console.log('Login successful:', response.data);
-            // Handle successful login, e.g., navigate to the main app screen
+            const response = await axios.post(`http://192.168.43.93:8082/auth/login`, {
+                email,
+                password,
+            });
+
+            if (response.status === 200) {
+                // Extract the token and role from the response data
+                const { token, role } = response.data;
+
+                // Store the token and role in local storage
+                AsyncStorage.setItem('token', token);
+                AsyncStorage.setItem('role', role);
+
+                // If login is successful, navigate to the appropriate screen based on the user's role
+                if (role === 'admin') {
+                    navigation.navigate('AdminHome');
+                } else {
+                    navigation.navigate('UserHome');
+                }
+            } else {
+                console.error('Login failed:', response.statusText);
+                // Handle login failure, e.g., show an error message to the user
+            }
         } catch (error) {
             console.error('Login error:', error);
             // Handle login error, e.g., show an error message to the user
         }
     };
+
 
     return (
         <SafeAreaView style={styles.container}>

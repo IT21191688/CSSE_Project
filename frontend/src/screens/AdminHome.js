@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RegisterScreen = () => {
+const AdminHome = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -228,4 +228,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RegisterScreen;
+export default AdminHome;

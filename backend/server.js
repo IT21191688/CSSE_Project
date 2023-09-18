@@ -59,7 +59,10 @@ mongoose.connect(URI, {
     console.log("Error Connecting MongoDb", error);
 });
 
-
+app.get('/getip', (req, res) => {
+    const clientIP = req.ip; // This retrieves the client's IP address
+    res.send({ ip: clientIP });
+});
 
 
 const db = mongoose.connection;

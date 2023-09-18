@@ -21,8 +21,11 @@ const register = async (req, res) => {
 
         // Create a new user
         const user = await User.create({ firstname, lastname, email, age, dob, password: hashedPassword, role });
-        console.log("Hello")
-        res.status(201).json({ message: 'User registered successfully' });
+        //console.log("Hello")
+        if (user) {
+            res.status(201).json({ message: 'User registered successfully' });
+        }
+
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: 'Something went wrong' });
@@ -40,7 +43,8 @@ const login = async (req, res) => {
         }
 
         // Compare the passwords
-        const isMatch = await bcrypt.compare(password, user.password);
+        const isMatch = bcrypt.compare(password, user.password);
+        //console.log(password + "  " + user.password)
         if (!isMatch) {
             return res.status(400).json({ message: 'Invalid email or password' });
         }
