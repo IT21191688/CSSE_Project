@@ -16,10 +16,9 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const UserHome = () => {
+const UserHome = ({ navigation }) => {
 
     const [role, setRole] = useState(null);
-    const navigation = useNavigation();
 
     useEffect(() => {
         const retrieveUserRole = async () => {
@@ -40,10 +39,7 @@ const UserHome = () => {
             await AsyncStorage.removeItem('token');
             await AsyncStorage.removeItem('role');
 
-            // Perform any other logout-related actions, e.g., resetting app state
-
-            // Navigate to the login screen or perform any other necessary actions
-            navigation.navigate('Auth', { screen: 'LoginScreen' });
+            navigation.navigate('LoginScreen');
 
 
         } catch (error) {

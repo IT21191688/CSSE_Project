@@ -17,7 +17,7 @@ function App() {
   useEffect(() => {
     const retrieveUserRole = async () => {
       try {
-        const storedRole = await AsyncStorage.getItem('role');
+        const storedRole = await AsyncStorage.getItem('role'); // Await here
         setRole(storedRole);
       } catch (error) {
         console.error('Error retrieving user role:', error);
@@ -26,6 +26,7 @@ function App() {
 
     retrieveUserRole();
   }, []);
+
 
   useEffect(() => {
     setTimeout(() => {
@@ -45,10 +46,10 @@ function App() {
                 <Stack.Screen name="UserHome" component={UserHome} />
               )
             ) : (
-              <React.Fragment>
+              <>
                 <Stack.Screen name="LoginScreen" component={LoginScreen} />
                 <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-              </React.Fragment>
+              </>
             )}
           </Stack.Navigator>
         </NavigationContainer>
@@ -56,7 +57,7 @@ function App() {
         <MainScreen />
       )
       }
-    </View >
+    </View>
   );
 }
 

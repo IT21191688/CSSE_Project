@@ -14,11 +14,10 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginScreen = () => {
+const LoginScreen = ({ navigation }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
-    const navigation = useNavigation();
 
     const handleLogin = async () => {
         try {
@@ -38,6 +37,7 @@ const LoginScreen = () => {
                 // If login is successful, navigate to the appropriate screen based on the user's role
                 if (role === 'admin') {
                     navigation.navigate('AdminHome');
+
                 } else {
                     navigation.navigate('UserHome');
                 }
