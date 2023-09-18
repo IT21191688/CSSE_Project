@@ -16,9 +16,10 @@ import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const UserHome = ({ navigation }) => {
+const UserHome = () => {
 
     const [role, setRole] = useState(null);
+    const navigation = useNavigation();
 
     useEffect(() => {
         const retrieveUserRole = async () => {

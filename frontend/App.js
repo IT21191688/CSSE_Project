@@ -8,6 +8,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import AdminHome from './src/screens/AdminHome';
 import UserHome from './src/screens/UserHome';
 import MainScreen from './src/screens/MainScreen';
+import { useNavigation } from '@react-navigation/native';
 
 function App() {
   const Stack = createNativeStackNavigator();
@@ -17,7 +18,7 @@ function App() {
   useEffect(() => {
     const retrieveUserRole = async () => {
       try {
-        const storedRole = await AsyncStorage.getItem('role'); // Await here
+        const storedRole = await AsyncStorage.getItem('role');
         setRole(storedRole);
       } catch (error) {
         console.error('Error retrieving user role:', error);

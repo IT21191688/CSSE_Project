@@ -14,10 +14,11 @@ import { useNavigation } from '@react-navigation/native';
 import Icon from "react-native-vector-icons/FontAwesome";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-const LoginScreen = ({ navigation }) => {
+const LoginScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
 
     const handleLogin = async () => {
         try {
@@ -27,27 +28,26 @@ const LoginScreen = ({ navigation }) => {
             });
 
             if (response.status === 200) {
-                // Extract the token and role from the response data
+
                 const { token, role } = response.data;
 
-                // Store the token and role in local storage
                 AsyncStorage.setItem('token', token);
                 AsyncStorage.setItem('role', role);
 
-                // If login is successful, navigate to the appropriate screen based on the user's role
                 if (role === 'admin') {
                     navigation.navigate('AdminHome');
+
 
                 } else {
                     navigation.navigate('UserHome');
                 }
             } else {
                 console.error('Login failed:', response.statusText);
-                // Handle login failure, e.g., show an error message to the user
+
             }
         } catch (error) {
             console.error('Login error:', error);
-            // Handle login error, e.g., show an error message to the user
+
         }
     };
 

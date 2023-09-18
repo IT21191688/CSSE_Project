@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RegisterScreen = ({ navigation }) => {
+const RegisterScreen = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -22,6 +22,7 @@ const RegisterScreen = ({ navigation }) => {
     const [password, setPassword] = useState('');
     const role = "user";
 
+    const navigation = useNavigation();
     /*
     const [clientIP, setClientIP] = useState(null);
 

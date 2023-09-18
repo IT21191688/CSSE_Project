@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const AdminHome = ({ navigation }) => {
+const AdminHome = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -21,6 +21,7 @@ const AdminHome = ({ navigation }) => {
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
     const role = "user";
+    const navigation = useNavigation();
 
 
     /*
