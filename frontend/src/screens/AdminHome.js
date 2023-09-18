@@ -13,7 +13,7 @@ import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-const RegisterScreen = () => {
+const AdminHome = () => {
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
     const [email, setEmail] = useState('');
@@ -21,8 +21,9 @@ const RegisterScreen = () => {
     const [dob, setDob] = useState('');
     const [password, setPassword] = useState('');
     const role = "user";
-
     const navigation = useNavigation();
+
+
     /*
     const [clientIP, setClientIP] = useState(null);
 
@@ -64,7 +65,6 @@ const RegisterScreen = () => {
             // Check if the response indicates success (you may need to adjust this based on your backend's response format)
             if (response.status === 200) {
                 console.log('Registration successful:', response.data);
-                navigation.navigate("LoginScreen");
                 // Handle success, e.g., navigate to the next screen
             }
         } catch (error) {
@@ -229,4 +229,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default RegisterScreen;
+export default AdminHome;
