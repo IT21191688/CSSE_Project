@@ -39,19 +39,14 @@ function App() {
     <View style={styles.container}>
       {isLoaded ? (
         <NavigationContainer>
-          <Stack.Navigator initialRouteName={role ? (role === 'admin' ? 'AdminHome' : 'UserHome') : 'LoginScreen'}>
-            {role ? (
-              role === 'admin' ? (
-                <Stack.Screen name="AdminHome" component={AdminHome} />
-              ) : (
-                <Stack.Screen name="UserHome" component={UserHome} />
-              )
-            ) : (
-              <>
-                <Stack.Screen name="LoginScreen" component={LoginScreen} />
-                <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
-              </>
-            )}
+          <Stack.Navigator
+            initialRouteName={isLoaded ? (role === 'admin' ? 'AdminHome' : 'UserHome') : 'LoginScreen'}
+          >
+
+            <Stack.Screen name="LoginScreen" component={LoginScreen} />
+            <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+            <Stack.Screen name="AdminHome" component={AdminHome} />
+            <Stack.Screen name="UserHome" component={UserHome} />
           </Stack.Navigator>
         </NavigationContainer>
       ) : (

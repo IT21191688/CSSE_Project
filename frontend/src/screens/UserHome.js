@@ -64,6 +64,7 @@ const UserHome = () => {
         <View>
             <Text>Hello User</Text>
             <Text>{role}</Text>
+            <Text>{role}</Text>
             <TouchableOpacity onPress={handleLogout} style={styles.logoutButton}>
                 <Text style={styles.logoutButtonText}>Logout</Text>
             </TouchableOpacity>

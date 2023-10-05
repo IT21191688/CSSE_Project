@@ -36,8 +36,6 @@ const LoginScreen = () => {
 
                 if (role === 'admin') {
                     navigation.navigate('AdminHome');
-
-
                 } else {
                     navigation.navigate('UserHome');
                 }
