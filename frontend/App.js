@@ -40,11 +40,11 @@ function App() {
       {isLoaded ? (
         <NavigationContainer>
           <Stack.Navigator
-            initialRouteName={isLoaded ? (role === 'admin' ? 'AdminHome' : 'UserHome') : 'LoginScreen'}
-          >
+            initialRouteName={isLoaded ? (role === 'admin' ? 'AdminHome' : 'UserHome') : 'LoginScreen'}>
 
             <Stack.Screen name="LoginScreen" component={LoginScreen} />
             <Stack.Screen name="RegisterScreen" component={RegisterScreen} />
+
             <Stack.Screen name="AdminHome" component={AdminHome} />
             <Stack.Screen name="UserHome" component={UserHome} />
           </Stack.Navigator>

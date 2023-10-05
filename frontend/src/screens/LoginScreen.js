@@ -8,6 +8,7 @@ import {
     KeyboardAvoidingView,
     TextInput,
     Pressable,
+    Alert
 } from "react-native";
 import axios from 'axios';
 import { useNavigation } from '@react-navigation/native';
@@ -22,7 +23,7 @@ const LoginScreen = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`http://192.168.43.93:8082/auth/login`, {
+            const response = await axios.post(`http://0.0.0.0:8082/auth/login`, {
                 email,
                 password,
             });
@@ -39,11 +40,14 @@ const LoginScreen = () => {
                 } else {
                     navigation.navigate('UserHome');
                 }
+                Alert.alert('Success', 'Login successful');
             } else {
+                Alert.alert('UnSuccess', 'Login Unsuccessful');
                 console.error('Login failed:', response.statusText);
 
             }
         } catch (error) {
+            Alert.alert('UnSuccess', 'Login Unsuccessful');
             console.error('Login error:', error);
 
         }
