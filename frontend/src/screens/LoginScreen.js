@@ -23,7 +23,7 @@ const LoginScreen = () => {
 
     const handleLogin = async () => {
         try {
-            const response = await axios.post(`http://0.0.0.0:8082/auth/login`, {
+            const response = await axios.post(`https://csse-proj.onrender.com/auth/login`, {
                 email,
                 password,
             });

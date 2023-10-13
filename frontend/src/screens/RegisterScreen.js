@@ -8,6 +8,7 @@ import {
     Image,
     KeyboardAvoidingView,
     TextInput,
+    TouchableOpacity,
 } from "react-native";
 import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
@@ -51,7 +52,7 @@ const RegisterScreen = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         try {
-            const response = await axios.post(`http://192.168.43.93:8082/auth/register`, {
+            const response = await axios.post(`https://csse-proj.onrender.com/auth/register`, {
                 firstname,
                 lastname,
                 email,
@@ -160,7 +161,7 @@ const RegisterScreen = () => {
                 </View>
 
                 {/* Register Button */}
-                <Pressable
+                <TouchableOpacity
                     onPress={handleRegister}
                     style={styles.registerButton}
                 >
@@ -174,7 +175,7 @@ const RegisterScreen = () => {
                     >
                         Register
                     </Text>
-                </Pressable>
+                </TouchableOpacity>
                 <Pressable
                     onPress={() => navigation.navigate("LoginScreen")}
                     style={{ marginTop: 15 }}
