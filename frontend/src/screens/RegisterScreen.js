@@ -8,6 +8,7 @@ import {
     Image,
     KeyboardAvoidingView,
     TextInput,
+    TouchableOpacity,
 } from "react-native";
 import axios from 'axios';
 import { useNavigation } from "@react-navigation/native";
@@ -160,7 +161,7 @@ const RegisterScreen = () => {
                 </View>
 
                 {/* Register Button */}
-                <Pressable
+                <TouchableOpacity
                     onPress={handleRegister}
                     style={styles.registerButton}
                 >
@@ -174,7 +175,7 @@ const RegisterScreen = () => {
                     >
                         Register
                     </Text>
-                </Pressable>
+                </TouchableOpacity>
                 <Pressable
                     onPress={() => navigation.navigate("LoginScreen")}
                     style={{ marginTop: 15 }}
