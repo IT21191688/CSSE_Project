@@ -28,7 +28,7 @@ const authenticate = (req, res, next) => {
 const googleAuthenticate = (req, res, next) => {
 
 
-    console.log(req.isAuthenticated())
+    //console.log(req.isAuthenticated())
 
     if (req.isAuthenticated()) {
 

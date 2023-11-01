@@ -8,18 +8,31 @@ const app = express();
 const googleAuth = require('./google.auth');
 const passport = require('passport');
 var session = require('express-session');
-const authRoutes = require('./routes/user.route');
-const { routsInit } = require('./controller/auth.google')
+
+const { routsInit, initGoogleAuthRoutes } = require('./controllers/auth.controller')
 const MongoStore = require('connect-mongo');
 const { config } = require("dotenv");
+
 const path = require('path');
+const database = require("./config/database");
+
+
+const authRoutes = require('./routes/auth.routes');
+const payementRoutes = require('./routes/payment.routes');
+
+const itemsRoutes = require('./routes/items.routes');
+const orderRoutes = require('./routes/order.routes');
+const orderItemRoutes = require('./routes/orderItems.routes');
+const inventoryRoutes = require('./routes/inventory.routes');
+const invoiceRoutes = require('./routes/invoice.routes');
+
 
 
 //import .env
 require("dotenv").config();
 
 //initialize port number
-const PORT = process.env.PORT || 8082;
+const PORT = process.env.PORT || 8080;
 
 //use dependancies
 app.use(cors());
@@ -36,35 +49,44 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-//    1.20
 
-mongoose.connect(URI, {
 
-    useNewUrlParser: true,
-    useUnifiedTopology: true
+//using singleton
+database.connect().then(() => {
 
-}).then(() => {
-
-    console.log('Connected to MongoDB!!!');
+    //console.log('Connected to MongoDB!!!');
 
     app.listen(PORT, () => {
+
         console.log(`Server is up and running on port ${PORT}`);
-        routsInit(app, passport)
+        initGoogleAuthRoutes(app, passport)
         googleAuth(passport)
-
-
 
     });
 }).catch((error) => {
     console.log("Error Connecting MongoDb", error);
 });
 
-app.get('/getip', (req, res) => {
-    const clientIP = req.ip; // This retrieves the client's IP address
-    res.send({ ip: clientIP });
-});
+
 
 
 const db = mongoose.connection;
 
+//sadeepa
 app.use('/auth', authRoutes);
+app.use('/payment', payementRoutes);
+
+//thanuja
+app.use('/order', orderRoutes);
+app.use('/item', itemsRoutes);
+app.use('/orderItem', orderItemRoutes);
+
+//thathsarani
+app.use('/inventory', inventoryRoutes);
+
+
+//kamishka
+app.use('/invoice', invoiceRoutes);
+
+
+module.exports = app;
