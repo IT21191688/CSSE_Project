@@ -1,0 +1,84 @@
+/* admin-home.css */
+
+.admin-home-container {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #27005D;
+    color: #fff;
+  }
+  
+  .admin-option {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    color: #333;
+    text-decoration: none;
+    margin: 10px; /* Added margin for spacing between divs */
+  }
+  
+  .admin-option:hover {
+    transform: translateY(-5px);
+  }
+  
+  .admin-option h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .admin-option p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  
+  .user-management {
+    background-color: #9400FF;
+    color: #fff;
+  }
+  
+  .course-tutes {
+    background-color: #AED2FF;
+    color: #000;
+  }
+  
+  .course-tutes-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+  }
+  
+  .course-tutes-option {
+    flex: 1;
+    width: 250px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    text-align: center;
+    transition: transform 0.2s;
+    cursor: pointer;
+    color: #333;
+    text-decoration: none;
+  }
+  
+  .course-tutes-option:hover {
+    transform: translateY(-5px);
+  }
+  
+  .course-tutes-option h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .course-tutes-option p {
+    font-size: 1rem;
+    opacity: 0.8;
+  }
+  
